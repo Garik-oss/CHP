@@ -15,7 +15,7 @@ int gcd(int a, int b) {
 }
 
 // Function to compute the LCM of two numbers
-int lcm(int a, int b) {
+int plcm(int a, int b) {
     if (a == 0 || b == 0) {
         return 0; // LCM of any number with 0 is 0
     }
@@ -32,7 +32,7 @@ int main() {
     std::cin >> num2;
 
     // Compute and display the LCM
-    int result = lcm(num1, num2);
+    int result = plcm(num1, num2);
     std::cout << "The least common multiple of " << num1 << " and " << num2 << " is " << result << std::endl;
 
     return 0;
