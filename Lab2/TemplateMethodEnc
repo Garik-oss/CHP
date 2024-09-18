@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+#include <unordered_map>
+
+char* encrypt(const std::string &plaintext) {
+    // Array1 with lowercase letters
+    const char arr1[] = "abcdefghijklmnopqrstuvwxyz";
+    
+    // Array2 with reversed letters
+    const char arr2[] = "zyxwvutsrqponmlkjihgfedcba";
+    
+    char* newtext = new char[plaintext.length()];
+    
+    for(int i = 0; i < plaintext.length(); i++)
+    {
+        *(newtext + i) = arr2[arr1[i] - 'a'];
+    }
+
+    return newtext;
+}
+
+std::string decrypt(const std::string &ciphertext) {
+    const char arr1[] = "abcdefghijklmnopqrstuvwxyz";
+    
+    const char arr2[] = "zyxwvutsrqponmlkjihgfedcba";
+
+    char* newtext = new char[ciphertext.length()];
+    
+    for(int i = 0; i < ciphertext.length(); i++)
+    {
+        *(newtext + i) = arr2[arr1[i] - 'a'];
+    }
+
+    return newtext;
+}
+
+int main() {
+    std::string plaintext;
+    std::cout << "Enter the plaintext: ";
+    std::getline(std::cin, plaintext);
+
+    std::string ciphertext = encrypt(plaintext);
+    std::cout << "Ciphertext: " << ciphertext << std::endl;
+    
+    std::string ciphertext2 = encrypt(ciphertext);
+    std::cout << "Ciphertext: " << ciphertext2 << std::endl;
+
+    std::string decryptedText = decrypt(ciphertext);
+    std::cout << "Decrypted text: " << decryptedText << std::endl;
+
+    return 0;
+}
