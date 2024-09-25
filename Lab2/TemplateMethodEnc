@@ -7,11 +7,12 @@ using namespace std;
 class Crypto
 {
     public:
-    virtual char* encrypt(const string &plaintext);
-    virtual char* decrypt(const std::string &ciphertext);
+    virtual char* encrypt(const string &plaintext) = 0;
+    virtual char* decrypt(const std::string &ciphertext) = 0;
     
-    virtual ~Crypto();
+    virtual ~Crypto() = 0;
 };
+Crypto::~Crypto() {}
 
 class TemplateMethodDecrypter : public Crypto
 {
@@ -68,8 +69,8 @@ class TemplateMethodDecrypter : public Crypto
     
     ~TemplateMethodDecrypter() override
     {
-        delete arr1;
-        delete arr2;
+        delete[] arr1;
+        delete[] arr2;
     }
 };
 
