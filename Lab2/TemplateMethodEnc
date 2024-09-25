@@ -2,50 +2,88 @@
 #include <string>
 #include <unordered_map>
 
-char* encrypt(const std::string &plaintext) {
-    // Array1 with lowercase letters
-    const char arr1[] = "abcdefghijklmnopqrstuvwxyz";
+using namespace std;
+
+class Crypto
+{
+    public:
+    virtual char* encrypt(const string &plaintext);
+    virtual char* decrypt(const std::string &ciphertext);
     
-    // Array2 with reversed letters
-    const char arr2[] = "zyxwvutsrqponmlkjihgfedcba";
+    virtual ~Crypto();
+};
+
+class TemplateMethodDecrypter : public Crypto
+{
+    private:
+    int len = 256;
+    char* arr1;
+    char* arr2; 
     
-    char* newtext = new char[plaintext.length()];
-    
-    for(int i = 0; i < plaintext.length(); i++)
+    int findIndex(char symbol)
     {
-        *(newtext + i) = arr2[arr1[i] - 'a'];
+        int i = 0;
+        while(arr2[i] != symbol)
+        {
+            i++;
+        }
+        
+        return i;
     }
-
-    return newtext;
-}
-
-std::string decrypt(const std::string &ciphertext) {
-    const char arr1[] = "abcdefghijklmnopqrstuvwxyz";
     
-    const char arr2[] = "zyxwvutsrqponmlkjihgfedcba";
-
-    char* newtext = new char[ciphertext.length()];
-    
-    for(int i = 0; i < ciphertext.length(); i++)
+    public:
+    TemplateMethodDecrypter()
     {
-        *(newtext + i) = arr2[arr1[i] - 'a'];
+        arr1 = new char[len];
+        arr2 = new char[len];
+        
+        for(int i = 0; i < len; i++)
+        {
+            arr1[i] = (char)i;
+            arr2[i] = (char)(len - i);
+        }
     }
-
-    return newtext;
-}
+    
+    virtual char* encrypt(const string &plaintext) override {
+        char* newtext = new char[plaintext.length()];
+        
+        for(int i = 0; i < plaintext.length(); i++)
+        {
+            *(newtext + i) = arr2[(int)plaintext[i]];
+        }
+    
+        return newtext;
+    }
+    
+    virtual char* decrypt(const std::string &ciphertext) override {
+        char* newtext = new char[ciphertext.length()];
+        
+        for(int i = 0; i < ciphertext.length(); i++)
+        {
+            *(newtext + i) = arr1[findIndex(ciphertext[i])];
+        }
+    
+        return newtext;
+    }
+    
+    ~TemplateMethodDecrypter() override
+    {
+        delete arr1;
+        delete arr2;
+    }
+};
 
 int main() {
+    Crypto& crypto = *new TemplateMethodDecrypter();
+    
     std::string plaintext;
     std::cout << "Enter the plaintext: ";
-    std::getline(std::cin, plaintext);
-
-    std::string ciphertext = encrypt(plaintext);
-    std::cout << "Ciphertext: " << ciphertext << std::endl;
+    std::cin >> plaintext;
     
-    std::string ciphertext2 = encrypt(ciphertext);
-    std::cout << "Ciphertext: " << ciphertext2 << std::endl;
+    std::string ciphertext = crypto.encrypt(plaintext);
+    std::cout << "Ciphertext: " << ciphertext << std::endl;
 
-    std::string decryptedText = decrypt(ciphertext);
+    std::string decryptedText = crypto.decrypt(ciphertext);
     std::cout << "Decrypted text: " << decryptedText << std::endl;
 
     return 0;
