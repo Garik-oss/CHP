@@ -17,7 +17,7 @@ Crypto::~Crypto() {}
 class TemplateMethodDecrypter : public Crypto
 {
     private:
-    const int len = 255;
+    const int len = 256;
     char* arr1;
     char* arr2; 
     
