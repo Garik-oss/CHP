@@ -1,0 +1,48 @@
+Server:  one.one.one.one
+Address:  1.1.1.1
+
+Name:    google.com
+Addresses:  2a00:1450:4028:800::200e
+	  142.250.75.110
+
+
+Windows IP Configuration
+
+
+Ethernet adapter Ethernet 2:
+
+   Connection-specific DNS Suffix  . : 
+   Link-local IPv6 Address . . . . . : fe80::4396:6b9f:fa33:73aa%6
+   IPv4 Address. . . . . . . . . . . : 192.168.56.1
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . : 
+   IPv4 Address. . . . . . . . . . . : 172.17.4.223
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 172.17.4.1
+
+Ethernet adapter vEthernet (WSL):
+
+   Connection-specific DNS Suffix  . : 
+   Link-local IPv6 Address . . . . . : fe80::99f5:e8bc:8601:2102%24
+   IPv4 Address. . . . . . . . . . . : 172.25.48.1
+   Subnet Mask . . . . . . . . . . . : 255.255.240.0
+   Default Gateway . . . . . . . . . : 
+   IPv4 Address. . . . . . . . . . . : 192.168.56.1
+   IPv4 Address. . . . . . . . . . . : 172.17.4.223
+   IPv4 Address. . . . . . . . . . . : 172.25.48.1
+   IPv4 Address. . . . . . . . . . . : 192.168.56.1
+   IPv4 Address. . . . . . . . . . . : 172.17.4.223
+   IPv4 Address. . . . . . . . . . . : 172.25.48.1
+   IPv4 Address. . . . . . . . . . . : 192.168.56.1
+   IPv4 Address. . . . . . . . . . . : 172.17.4.223
+   IPv4 Address. . . . . . . . . . . : 172.25.48.1
+Windows IP Configuration
+   Link-local IPv6 Address . . . . . : fe80::4396:6b9f:fa33:73aa%6
+   IPv4 Address. . . . . . . . . . . : 192.168.56.1
+   IPv4 Address. . . . . . . . . . . : 172.17.4.223
+   Link-local IPv6 Address . . . . . : fe80::99f5:e8bc:8601:2102%24
+   IPv4 Address. . . . . . . . . . . : 172.25.48.1
